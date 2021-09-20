@@ -13,6 +13,7 @@ const btnSignUp = document.querySelector(".signup_btn");
 const newUserEmail = document.querySelector(".signup_email");
 const newUserUsername = document.querySelector(".signup_username");
 const newUserPin = document.querySelector(".signup_pin");
+const overlay = document.querySelector(".overlay");
 
 /* --- User Login --- */
 //Login
@@ -22,6 +23,7 @@ logInPrompt.addEventListener("click", function () {
   document.querySelector(".login_form").style.display = "inline-block";
   logInPrompt.style.visibility = "hidden";
   signUpPrompt.style.visibility = "hidden";
+  overlay.classList.remove('hidden');
   // logInPrompt.style.display = "none";
   // signUpPrompt.style.display = "none";
   // logInPrompt.style.visibility = "hidden";
@@ -72,6 +74,7 @@ signUpPrompt.addEventListener("click", function () {
   document.querySelector(".signup_form").style.display = "inline-block";
   logInPrompt.style.visibility = "hidden";
   signUpPrompt.style.visibility = "hidden";
+  overlay.classList.remove('hidden');
 });
 
 let accountNumber = 1;
@@ -97,6 +100,15 @@ btnSignUp.addEventListener("click", function (e) {
   }
 });
 
+
+/* --- Click overlay to exit --- */
+overlay.addEventListener("click", function () {
+  overlay.classList.add('hidden');
+  logInPrompt.style.visibility = "visible";
+  signUpPrompt.style.visibility = "visible";
+  document.querySelector(".signup_form").style.display = "none";
+  document.querySelector(".login_form").style.display = "none";
+});
 
 /* --- Timer --- */
 const btnStart = document.querySelector(".timer-start");
