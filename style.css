@@ -1,3 +1,11 @@
+/* --- Colour Palette --- /
+E57A44 - Mandarin
+EFEFEF - Cultured
+100F10 - Smoky black
+922D50 - Magenta
+668F80 - Wintergreen Dream
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -35,15 +43,17 @@ nav {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
+  overflow:-moz-hidden-unscrollable;
 }
 
 .welcome {
   font-size: 1.9rem;
   font-weight: 500;
+  width: 250px;
 }
 
 .logo {
-  height: 10.50rem;
+  height: 10.5rem;
 }
 /* .login {
   display: none;
@@ -70,17 +80,24 @@ nav {
 }
 
 .signup_prompt,
-.login_prompt {
+.login_prompt,
+.logout_prompt,
+.user_profile_prompt {
   padding: 0.5rem 2rem;
   font-size: 1.6rem;
   font-family: inherit;
   text-align: center;
   width: 11rem;
   border-radius: 10rem;
-  margin-right: 1rem;
+  margin-left: 1rem;
   color: inherit;
   border: 3px solid #000;
   background-color: #fff;
+}
+
+.user_profile_prompt {
+  display: none;
+  width: 13rem;
 }
 /* 
 .login__input:focus {
@@ -105,9 +122,7 @@ nav {
 }
 
 .login__btn:hover,
-.login__btn:focus,
-.btn--sort:hover,
-.btn--sort:focus {
+.login__btn:focus,{
   outline: none;
   color: #777;
 }
@@ -146,13 +161,35 @@ nav {
 
 .signup_form,
 .login_form {
+  display: none;
   width: 250px;
   position: absolute;
-  display: none;
   right: 2rem;
   top: 2rem;
   background-color: #fff;
   z-index: 10;
+}
+
+
+.user_profile_summary{
+  display: none;
+  padding: 10px 10px;
+  width: 260px;
+  border: solid 0.5px;
+  background-color: #000;
+  color: #fff;
+  z-index: 7;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
+
+.user_details{
+  margin: 10px 0;
+  padding: 10px 10px;
+  text-align: left;
+  font-size: 15px;
 }
 
 /* --- Timer --- */
@@ -160,53 +197,75 @@ nav {
 .timer {
   visibility: hidden;
   border: solid;
+  background-color: #f3f3f3;
   padding: 15px;
   position: absolute;
-  width: 400px;
+  width: 450px;
   top: 40%;
   left: 50%;
-  transform: translate(-50%,-60%);
+  transform: translate(-50%, -60%);
 }
 
 .hours,
 .minutes,
 .seconds,
 .colon {
-  font-size: 5em;
+  font-size: 7em;
 }
 
-.timer-countdown,
-.timer-btns {
+.timer_countdown,
+.timer_btns {
   display: flex;
   align-items: flex-start;
   justify-content: center;
 }
-.timer-start,
-.timer-end,
-.timer-gift {
-  width: 70px;
+.timer_start,
+.timer_end,
+.timer_gift,
+.timer_hold {
+  width: 100px;
   border: solid #000;
   border-radius: 15px;
   color: #000;
   text-align: center;
   padding: 4px;
-  margin: 20px 20px 0 20px;
+  margin: 20px 10px;
+  font-size: 14px;
 }
 
-.timer-start:hover {
+.timer_start:hover {
   background-color: #e57a44;
   color: #fff;
 }
-.timer-start:active {
-  background-color: #efefef;
-}
 
-.timer-end:hover {
+.timer_end:hover {
   background-color: #100f10;
   color: #fff;
 }
 
-.timer-gift:hover {
+.timer_gift:hover {
   background-color: #668f80;
   color: #fff;
 }
+
+.timer_hold:hover {
+  background-color: #922d50;
+  color: #fff;
+}
+
+/* --- Gifting function --- */
+.gift_menu{
+  display: none;
+  padding: 10px 10px;
+  width: 260px;
+  border: solid 0.5px;
+  background-color: #000;
+  color: #fff;
+  z-index: 7;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
+
+/* .gift_menu{display: inline-block;} */

@@ -22,7 +22,7 @@
 <!-- TOP NAVIGATION -->
 <nav class>
   <p class ="welcome">Log in to get started</p>
-  <img src ="icon.png" alt="Logo" class="logo" />
+  <a href=index.html><img src ="icon.png" alt="Logo" class="logo" /></a>
   <form>
     <div class = "user_prompt">
       <div class = "signup_prompt">
@@ -31,25 +31,14 @@
       <div class = "login_prompt">
           <p> Login </p>
       </div>
+      <div class = "user_profile_prompt">
+        <p> My profile </p>
+      </div>
+      <div class = "logout_prompt">
+        <p> Logout </p>
+      </div>
     </div>
   </form>
-<!-- <div class = "signup_form"> -->
-  <!-- <form class="login">
-    <input
-      type="text"
-      placeholder="username"
-      class="login__input login__input--user"
-    />
-    <!-- In practice, use type="password" -->
-    <!-- <input
-      type="text"
-      placeholder="PIN"
-      maxlength="4"
-      class="login__input login__input--pin"
-    />
-    <button class="login__btn">&rarr;</button> -->
-  </form>
-<!-- </div>   -->
 </nav>
 
 <div class="login_form">
@@ -78,6 +67,12 @@
         <h1>Sign up</h1>
         <input
             type = "text"
+            placeholder="Full name"
+            class="signup_input signup_name"
+            required
+        >
+        <input
+            type = "email"
             placeholder="Email"
             class="signup_input signup_email"
             required
@@ -98,23 +93,44 @@
     <p><br>** Usernames - lowercase and no spaces please</p>
     </form>
 </div>
-
 <main class = "main_page">
+  
+    <div class = "user_profile_summary">
+      <h1 class="user_profile_welcome"></h1>
+      <p class="user_details user_name"> Lorem ipsum</p>
+      <p class="user_details user_email"> Lorem ipsum</p>
+      <p class="user_details user_username">Lorem ipsum</p>
+      <p class="user_details user_pin">Lorem ipsum</p>
+      <p class="user_details user_time">Lorem ipsum</p>
+    </div>
+
     <div class="timer">
-        <div class="timer-countdown">
+        <div class="timer_countdown">
           <label class="hours">00</label>
           <label class="colon">:</label>
           <label class="minutes">00</label>
           <label class="colon">:</label>
           <label class="seconds">00</label>
         </div>
-        <div class="timer-btns">
-          <div class="timer-start">Start</div>
-          <div class="timer-end">End</div>
+        <div class="timer_btns">
+          <div class="timer_start">Start</div>
+          <div class="timer_end">End</div>
+          <div class="timer_gift"> Gift </div>
+          <div class="timer_hold"> Hold </div>
         </div>
-        <div class="timer-btns">
-          <div class="timer-gift"> Gift </div>
-        </div>
+        <!-- <div class="timer_btns">
+          <div class="timer_gift"> Gift </div>
+          <div class="timer_hold"> Hold </div>
+        </div> -->
+    </div>
+    <div class="gift_menu">
+      <p class="gift_details user_time"> </p>
+      <div class = "users_other">
+        <p class="gift_details users_other_name"> Insert other user's name</p>
+        <input type = "number" placeholder = "Time to be gifted" class = "time_gift">
+        <btn class="gift_confirm"></btn>
+      </div>
+
     </div>
 </main>
 
