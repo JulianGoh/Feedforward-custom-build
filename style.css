@@ -30,7 +30,6 @@ nav {
   padding: 0 2rem;
 }
 
-
 /*Remove scroll from 'number' input */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -92,12 +91,12 @@ input::-webkit-inner-spin-button {
 .logout_prompt,
 .user_profile_prompt,
 .gift_recipient,
-.time_gift{
+.time_gift {
   padding: 0.5rem 2rem;
   font-size: 1.6rem;
   font-family: inherit;
   text-align: center;
-  width: 11rem;
+  width: 12rem;
   border-radius: 10rem;
   margin-left: 1rem;
   color: inherit;
@@ -275,12 +274,10 @@ input::-webkit-inner-spin-button {
   transform: translate(-50%, -60%);
 }
 
-
 .gift_function {
   display: flex;
   justify-content: space-between;
 }
-
 
 .gift_recipient,
 .time_gift {
@@ -303,7 +300,6 @@ input::-webkit-inner-spin-button {
   text-align: center;
 }
 
-
 .single_user {
   display: flex;
   justify-content: space-between;
@@ -314,9 +310,9 @@ input::-webkit-inner-spin-button {
   display: flex;
   flex-direction: row;
   width: 100%;
-  color: #FFF;
+  color: #fff;
 }
 
-.gift_user_time{
-  color: #FFF;
+.gift_user_time {
+  color: #fff;
 }
