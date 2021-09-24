@@ -195,7 +195,7 @@ nav {
 /* --- Timer --- */
 
 .timer {
-  visibility: hidden;
+  /* visibility: hidden; */
   border: solid;
   background-color: #f3f3f3;
   padding: 15px;
@@ -257,7 +257,7 @@ nav {
 .gift_menu{
   display: none;
   padding: 10px 10px;
-  width: 260px;
+  width: 400px;
   border: solid 0.5px;
   background-color: #000;
   color: #fff;
@@ -268,4 +268,46 @@ nav {
   transform: translate(-50%, -60%);
 }
 
-/* .gift_menu{display: inline-block;} */
+.gift_menu{
+  display: inline-block;
+  z-index: 6;
+}
+
+.users_other{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.gift_details{
+  margin: 0; 
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+}
+
+.gift_confirm_btn{
+  width: 50px;
+  border: solid #FFF;
+  background-color: #000;
+  color: #fff;
+  text-align: center
+}
+
+.time_gift{
+  width: 120px;
+}
+
+.single_user{
+  display: flex;
+  border:solid red;
+  justify-content:space-between;
+}
+
+.gift_table{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

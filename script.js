@@ -27,6 +27,10 @@ const userPin = document.querySelector(".user_pin");
 const userTime = document.querySelector(".user_time");
 const timerGift = document.querySelector(".timer_gift");
 const timerHold = document.querySelector(".timer_Hold");
+const giftMenu = document.querySelector(".gift_menu");
+const giftUserTime = document.querySelector(".gift_user_time");
+const usersOther = document.querySelector(".users_other");
+const usersOtherName = document.querySelector(".users_other_name");
 
 logoutPrompt.classList.add("hidden");
 // signUpForm.classList.add("hidden");
@@ -149,13 +153,14 @@ btnSignUp.addEventListener("click", function (e) {
 /* --- Click overlay to exit --- */
 overlay.addEventListener("click", function () {
   overlay.classList.add("hidden");
-  // loginPrompt.classList.remove("hidden");
-  // signUpPrompt.classList.remove("hidden");
   signUpForm.style.display = "none";
   loginForm.style.display = "none";
   userProfile.style.display = "none";
-  // signupForm.classList.add("hidden");
-  // loginForm.classList.add("hidden");
+  giftMenu.style.display = "none";
+  
+  table.innerHTML = "";
+  // console.log(table);
+
 });
 
 /* --- User profile --- */
@@ -179,8 +184,8 @@ logoutPrompt.addEventListener("click", function () {
   loginPrompt.classList.remove("hidden");
   signUpPrompt.classList.remove("hidden");
   logoutPrompt.classList.add("hidden");
-  labelWelcome.textContent = 'Login to get started';
-  document.querySelector(".timer").style.visibility = "hidden"; 
+  labelWelcome.textContent = "Login to get started";
+  document.querySelector(".timer").style.visibility = "hidden";
   userProfilePrompt.style.display = "none";
 });
 
@@ -204,15 +209,52 @@ btnEnd.addEventListener("click", function () {
   clearInterval(acc);
 });
 
-for(const firstName of accounts){
-  console.log(firstName.username.split(" ")[0]);
-}
-
 // Gift time functionality
 
-timerGift.addEventListener('click', function(){
-  
+let para = [];
+let name1 = [];
+let table = document.createElement('table');
+table.className = "gift_table";
 
+timerGift.addEventListener("click", function () {
+  console.log(table);
+  overlay.classList.remove("hidden");
+  // giftUserTime.textContent = `You currently have: ${currentAccount.time} seconds.`;
+  giftMenu.style.display = "inline-block";
+  document.querySelector(".users_other").appendChild(table);
+  for (const [ind,user] of accounts.entries()) {
+    // para.push(document.createElement("p"));
+    // console.log(para);
+    // name1.push(document.createTextNode(user.username));
+    // console.log(name1);
+    // document.querySelector(".users_other").appendChild(para[ind].appendChild(name1[ind]));
+    // para[ind].classList.add("gift_details")
+
+    let singleUser = document.createElement("div");
+    singleUser.className = "single_user";
+    
+
+    let para = document.createElement('p');
+    para.className = "gift_details";
+    let n = document.createElement("n");
+    let text = document.createTextNode(user.username);
+
+    n.appendChild(text);
+    para.appendChild(n);
+    singleUser.appendChild(para);
+
+    let timeInput = document.createElement('input');
+    timeInput.className = "gift_details time_gift";
+    singleUser.appendChild(timeInput);
+
+    let timeSubmit = document.createElement('btn');
+    timeSubmit.className = "gift_details gift_confirm_btn";
+    timeSubmit.textContent = "Confirm"
+    singleUser.appendChild(timeSubmit);
+
+    table.appendChild(singleUser);
+
+  }
 });
 
 // Confirm gift
@@ -223,7 +265,6 @@ timerGift.addEventListener('click', function(){
 //   hoursLabel.innerHTML = "00";
 
 // });
-
 
 function setTime() {
   ++totalSeconds;
