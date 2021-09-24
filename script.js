@@ -29,6 +29,9 @@ const timerGift = document.querySelector(".timer_gift");
 const timerHold = document.querySelector(".timer_Hold");
 const giftMenu = document.querySelector(".gift_menu");
 const giftUserTime = document.querySelector(".gift_user_time");
+const giftConfirm = document.querySelector(".gift_confirm_btn");
+const giftRecipient = document.querySelector(".gift_recipient");
+const timeGift = document.querySelector(".time_gift");
 const usersOther = document.querySelector(".users_other");
 const usersOtherName = document.querySelector(".users_other_name");
 
@@ -58,7 +61,7 @@ const account0 = {
   email: "neo@gmail.com",
   username: "neo",
   pin: 1,
-  time: 0,
+  time: 99,
 };
 
 const account1 = {
@@ -81,7 +84,6 @@ btnLogin.addEventListener("click", function (e) {
   currentAccount = accounts.find(
     (acc) => acc.username === inputLoginUsername.value
   );
-  console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
@@ -157,10 +159,9 @@ overlay.addEventListener("click", function () {
   loginForm.style.display = "none";
   userProfile.style.display = "none";
   giftMenu.style.display = "none";
-  
+
   table.innerHTML = "";
   // console.log(table);
-
 });
 
 /* --- User profile --- */
@@ -213,29 +214,21 @@ btnEnd.addEventListener("click", function () {
 
 let para = [];
 let name1 = [];
-let table = document.createElement('table');
+let table = document.createElement("table");
 table.className = "gift_table";
 
 timerGift.addEventListener("click", function () {
   console.log(table);
   overlay.classList.remove("hidden");
-  // giftUserTime.textContent = `You currently have: ${currentAccount.time} seconds.`;
+  giftUserTime.textContent = `You currently have: ${currentAccount.time} seconds.`;
   giftMenu.style.display = "inline-block";
-  document.querySelector(".users_other").appendChild(table);
-  for (const [ind,user] of accounts.entries()) {
-    // para.push(document.createElement("p"));
-    // console.log(para);
-    // name1.push(document.createTextNode(user.username));
-    // console.log(name1);
-    // document.querySelector(".users_other").appendChild(para[ind].appendChild(name1[ind]));
-    // para[ind].classList.add("gift_details")
-
+  document.querySelector(".gift_menu").appendChild(table);
+  for (const [ind, user] of accounts.entries()) {
     let singleUser = document.createElement("div");
     singleUser.className = "single_user";
-    
 
-    let para = document.createElement('p');
-    para.className = "gift_details";
+    let para = document.createElement("p");
+    para.className = "users_other";
     let n = document.createElement("n");
     let text = document.createTextNode(user.username);
 
@@ -243,17 +236,27 @@ timerGift.addEventListener("click", function () {
     para.appendChild(n);
     singleUser.appendChild(para);
 
-    let timeInput = document.createElement('input');
-    timeInput.className = "gift_details time_gift";
-    singleUser.appendChild(timeInput);
-
-    let timeSubmit = document.createElement('btn');
-    timeSubmit.className = "gift_details gift_confirm_btn";
-    timeSubmit.textContent = "Confirm"
-    singleUser.appendChild(timeSubmit);
-
     table.appendChild(singleUser);
+    console.log(ind, user);
+  }
+});
 
+giftConfirm.addEventListener("click", function () {
+  let valueTransfer = Number(timeGift.value);
+  let validAccount = accounts.find(
+    (acc) => acc.username === giftRecipient.value
+  );
+  if (
+    valueTransfer > 0 &&
+    validAccount &&
+    timeGift.value <= currentAccount.time &&
+    currentAccount.username != validAccount.username
+  ) {
+    currentAccount.time = currentAccount.time - valueTransfer;
+    validAccount.time = validAccount.time + valueTransfer;
+    timeGift.value = giftRecipient.value = "";
+    giftUserTime.textContent = `You currently have: ${currentAccount.time} seconds.`;
+    console.log("Successful gift");
   }
 });
 

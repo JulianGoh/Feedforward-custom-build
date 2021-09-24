@@ -30,6 +30,14 @@ nav {
   padding: 0 2rem;
 }
 
+
+/*Remove scroll from 'number' input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .hidden {
   display: none;
 }
@@ -43,7 +51,7 @@ nav {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
-  overflow:-moz-hidden-unscrollable;
+  overflow: -moz-hidden-unscrollable;
 }
 
 .welcome {
@@ -82,7 +90,9 @@ nav {
 .signup_prompt,
 .login_prompt,
 .logout_prompt,
-.user_profile_prompt {
+.user_profile_prompt,
+.gift_recipient,
+.time_gift{
   padding: 0.5rem 2rem;
   font-size: 1.6rem;
   font-family: inherit;
@@ -122,7 +132,7 @@ nav {
 }
 
 .login__btn:hover,
-.login__btn:focus,{
+.login__btn:focus {
   outline: none;
   color: #777;
 }
@@ -170,8 +180,7 @@ nav {
   z-index: 10;
 }
 
-
-.user_profile_summary{
+.user_profile_summary {
   display: none;
   padding: 10px 10px;
   width: 260px;
@@ -185,7 +194,7 @@ nav {
   transform: translate(-50%, -60%);
 }
 
-.user_details{
+.user_details {
   margin: 10px 0;
   padding: 10px 10px;
   text-align: left;
@@ -195,7 +204,7 @@ nav {
 /* --- Timer --- */
 
 .timer {
-  /* visibility: hidden; */
+  visibility: hidden;
   border: solid;
   background-color: #f3f3f3;
   padding: 15px;
@@ -254,13 +263,11 @@ nav {
 }
 
 /* --- Gifting function --- */
-.gift_menu{
+.gift_menu {
   display: none;
   padding: 10px 10px;
-  width: 400px;
   border: solid 0.5px;
   background-color: #000;
-  color: #fff;
   z-index: 7;
   position: absolute;
   top: 40%;
@@ -268,46 +275,48 @@ nav {
   transform: translate(-50%, -60%);
 }
 
-.gift_menu{
-  display: inline-block;
-  z-index: 6;
+
+.gift_function {
+  display: flex;
+  justify-content: space-between;
 }
 
-.users_other{
+
+.gift_recipient,
+.time_gift {
+  width: 16rem;
+  margin: 0 10px;
+}
+
+.users_other {
+  margin: 0;
   display: flex;
-  align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+  width: 50px;
+}
+
+.gift_confirm_btn {
+  padding: 10px 5px;
+  border: solid #fff;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+
+
+.single_user {
+  display: flex;
   justify-content: space-between;
   padding: 10px 10px;
 }
 
-.gift_details{
-  margin: 0; 
+.gift_table {
   display: flex;
-  flex-direction: column;
-  width: 50px;
-}
-
-.gift_confirm_btn{
-  width: 50px;
-  border: solid #FFF;
-  background-color: #000;
-  color: #fff;
-  text-align: center
-}
-
-.time_gift{
-  width: 120px;
-}
-
-.single_user{
-  display: flex;
-  border:solid red;
-  justify-content:space-between;
-}
-
-.gift_table{
-  display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
+  color: #FFF;
+}
+
+.gift_user_time{
+  color: #FFF;
 }
