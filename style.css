@@ -203,7 +203,7 @@ input::-webkit-inner-spin-button {
 /* --- Timer --- */
 
 .timer {
-  visibility: hidden;
+  /* visibility: hidden; */
   border: solid;
   background-color: #f3f3f3;
   padding: 15px;
@@ -277,6 +277,7 @@ input::-webkit-inner-spin-button {
 .gift_function {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .gift_recipient,
@@ -293,11 +294,12 @@ input::-webkit-inner-spin-button {
 }
 
 .gift_confirm_btn {
-  padding: 10px 5px;
-  border: solid #fff;
-  background-color: #000;
+  border: none;
+  background: none;
+  font-size: 2.2rem;
   color: #fff;
-  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .single_user {
@@ -315,4 +317,82 @@ input::-webkit-inner-spin-button {
 
 .gift_user_time {
   color: #fff;
+  font-size: 1.6rem;
+}
+
+/* ----- MEDIA QUERIES RESPONSIVE ----- */
+
+/* Big tablet to 1200px (widths smaller than the 1140px row) */
+@media only screen and (max-width: 1200px) {
+  /* .row{ padding: 0 2%; } */
+}
+
+/*Small tablet to big tablet: from 768px to 1023px */
+@media only screen and (max-width: 1023px) {
+  /* body{ font-size: 18px;} */
+  /* .row{ padding: 0 3%; } */
+}
+
+/* Small phones to small tablets from 481px to 767px */
+@media only screen and (max-width: 767px) {
+  /* body{ font-size: 15px;} */
+}
+
+/* Small phones: from 0 to 480px */
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  nav {
+    flex-direction: column;
+    align-content: space-evenly;
+  }
+  .main_page {
+    height: 80vh;
+  }
+  .logo {
+    order: 1;
+    height: 7.5rem;
+  }
+
+  .welcome {
+    order: 3;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .user_prompt {
+    order: 2;
+    margin: 10px;
+  }
+  .signup_form,
+  .login_form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .timer {
+    width: 300px;
+  }
+  .hours,
+  .minutes,
+  .seconds,
+  .colon {
+    font-size: 4em;
+  }
+
+  .timer_start,
+  .timer_end,
+  .timer_gift,
+  .timer_hold {
+    padding: 0 5px;
+  }
+
+  .gift_recipient,
+  .time_gift{
+    width: 100px;
+    font-size: 1.2rem;
+  }
 }

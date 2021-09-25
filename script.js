@@ -26,7 +26,7 @@ const userUsername = document.querySelector(".user_username");
 const userPin = document.querySelector(".user_pin");
 const userTime = document.querySelector(".user_time");
 const timerGift = document.querySelector(".timer_gift");
-const timerHold = document.querySelector(".timer_Hold");
+const timerHold = document.querySelector(".timer_hold");
 const giftMenu = document.querySelector(".gift_menu");
 const giftUserTime = document.querySelector(".gift_user_time");
 const giftConfirm = document.querySelector(".gift_confirm_btn");
@@ -237,7 +237,7 @@ timerGift.addEventListener("click", function () {
     singleUser.appendChild(para);
 
     table.appendChild(singleUser);
-    console.log(ind, user);
+    // console.log(ind, user);
   }
 });
 
@@ -260,14 +260,15 @@ giftConfirm.addEventListener("click", function () {
   }
 });
 
-// Confirm gift
-// timerGift.addEventListener('click', function(){
-//   totalSeconds = 0;
-//   secondsLabel.innerHTML = "00";
-//   minutesLabel.innerHTML = "00";
-//   hoursLabel.innerHTML = "00";
+/* --- Hodl function --- */
+timerHold.addEventListener('click', function(){
+  currentAccount.time = totalSeconds + currentAccount.time; 
+  totalSeconds = 0;
+  secondsLabel.innerHTML = "00";
+  minutesLabel.innerHTML = "00";
+  hoursLabel.innerHTML = "00";
 
-// });
+});
 
 function setTime() {
   ++totalSeconds;
