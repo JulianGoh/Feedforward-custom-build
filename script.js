@@ -218,7 +218,7 @@ let table = document.createElement("table");
 table.className = "gift_table";
 
 timerGift.addEventListener("click", function () {
-  console.log(table);
+  // console.log(table);
   overlay.classList.remove("hidden");
   giftUserTime.textContent = `You currently have: ${currentAccount.time} seconds.`;
   giftMenu.style.display = "inline-block";
@@ -256,7 +256,7 @@ giftConfirm.addEventListener("click", function () {
     validAccount.time = validAccount.time + valueTransfer;
     timeGift.value = giftRecipient.value = "";
     giftUserTime.textContent = `You currently have: ${currentAccount.time} seconds.`;
-    console.log("Successful gift");
+    // console.log("Successful gift");
   }
 });
 
