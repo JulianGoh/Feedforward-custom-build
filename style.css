@@ -203,7 +203,7 @@ input::-webkit-inner-spin-button {
 /* --- Timer --- */
 
 .timer {
-  /* visibility: hidden; */
+  visibility: hidden;
   border: solid;
   background-color: #f3f3f3;
   padding: 15px;
