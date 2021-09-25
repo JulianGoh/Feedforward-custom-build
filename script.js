@@ -82,7 +82,7 @@ btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
 
   currentAccount = accounts.find(
-    (acc) => acc.username === inputLoginUsername.value
+    (acc) => acc.username === inputLoginUsername.value.toLowerCase()
   );
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
@@ -261,13 +261,12 @@ giftConfirm.addEventListener("click", function () {
 });
 
 /* --- Hodl function --- */
-timerHold.addEventListener('click', function(){
-  currentAccount.time = totalSeconds + currentAccount.time; 
+timerHold.addEventListener("click", function () {
+  currentAccount.time = totalSeconds + currentAccount.time;
   totalSeconds = 0;
   secondsLabel.innerHTML = "00";
   minutesLabel.innerHTML = "00";
   hoursLabel.innerHTML = "00";
-
 });
 
 function setTime() {
