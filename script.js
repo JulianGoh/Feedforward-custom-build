@@ -42,16 +42,8 @@ logoutPrompt.classList.add("hidden");
 /* --- User Login --- */
 //Login
 loginPrompt.addEventListener("click", function () {
-  // document.querySelector('.login').style.display = "flex";
-  // document.querySelector('.login').style.visibility = "visible";
   document.querySelector(".login_form").style.display = "inline-block";
-  // loginPrompt.classList.add("hidden");
-  // signUpPrompt.classList.add("hidden");
   overlay.classList.remove("hidden");
-  // logInPrompt.style.display = "none";
-  // signUpPrompt.style.display = "none";
-  // logInPrompt.style.visibility = "hidden";
-  // signUpPrompt.style.visibility = "hidden";
 });
 
 /* --- Accounts --- */
@@ -313,7 +305,9 @@ if (isSupported) {
       // wakeLock.onrelease = function(ev) {
       //   console.log(ev);
       // }
-    } catch (err) {}
+    } catch (err) {
+      wakeButton.dataset.status = "off";
+    }
   }; // requestWakeLock()
 
   // if we click our button

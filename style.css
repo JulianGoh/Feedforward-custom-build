@@ -170,7 +170,7 @@ input::-webkit-inner-spin-button {
 
 .signup_form,
 .login_form {
-  display: none;
+  display: none ;
   width: 250px;
   position: absolute;
   right: 2rem;
@@ -241,7 +241,8 @@ input::-webkit-inner-spin-button {
   font-size: 14px;
 }
 
-.timer_start:hover {
+.timer_start:hover,
+.timer_start:active {
   background-color: #e57a44;
   color: #fff;
 }
