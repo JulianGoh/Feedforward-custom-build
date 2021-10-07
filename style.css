@@ -391,13 +391,13 @@ input::-webkit-inner-spin-button {
   }
 
   .gift_recipient,
-  .time_gift{
+  .time_gift {
     width: 100px;
     font-size: 1.2rem;
   }
 
   .login_prompt,
-  .signup_prompt{
+  .signup_prompt {
     margin: 0 1rem;
   }
 }
