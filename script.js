@@ -150,7 +150,7 @@ overlay.addEventListener("click", function () {
   signUpForm.style.display = "none";
   loginForm.style.display = "none";
   userProfile.style.display = "none";
-  giftMenu.style.display = "none";
+  giftMenu.style.visibility = "hidden";
 
   table.innerHTML = "";
   // console.log(table);
@@ -169,6 +169,7 @@ userProfilePrompt.addEventListener("click", function () {
   userUsername.textContent = `Username: ${currentAccount.username}`;
   userPin.textContent = `Pin: ${currentAccount.pin}`;
   userTime.textContent = `Time: ${currentAccount.time} seconds`;
+  document.querySelector(".timer").style.zIndex = "3";
 });
 
 /* --- Sign out --- */
@@ -195,6 +196,8 @@ let acc;
 
 btnStart.addEventListener("click", function () {
   acc = setInterval(setTime, 1000);
+  overlay.classList.remove("hidden");
+  document.querySelector(".timer").style.zIndex = "8";
 });
 
 // Stop timer functionality
@@ -212,8 +215,10 @@ table.className = "gift_table";
 timerGift.addEventListener("click", function () {
   // console.log(table);
   overlay.classList.remove("hidden");
+  giftMenu.style.visibility = "visible";
+  document.querySelector(".timer").style.zIndex = "3";
   giftUserTime.textContent = `You currently have: ${currentAccount.time} seconds.`;
-  giftMenu.style.display = "inline-block";
+  // giftMenu.style.display = "inline-block";
   document.querySelector(".gift_menu").appendChild(table);
   for (const [ind, user] of accounts.entries()) {
     let singleUser = document.createElement("div");
@@ -259,6 +264,7 @@ timerHold.addEventListener("click", function () {
   secondsLabel.innerHTML = "00";
   minutesLabel.innerHTML = "00";
   hoursLabel.innerHTML = "00";
+  overlay.classList.add("hidden");
 });
 
 function setTime() {

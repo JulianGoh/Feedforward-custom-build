@@ -53,6 +53,7 @@ input::-webkit-inner-spin-button {
   overflow: -moz-hidden-unscrollable;
 }
 
+
 .welcome {
   font-size: 1.9rem;
   font-weight: 500;
@@ -186,7 +187,7 @@ input::-webkit-inner-spin-button {
   border: solid 0.5px;
   background-color: #000;
   color: #fff;
-  z-index: 7;
+  z-index: 10;
   position: absolute;
   top: 40%;
   left: 50%;
@@ -231,12 +232,12 @@ input::-webkit-inner-spin-button {
 .timer_end,
 .timer_gift,
 .timer_hold {
-  width: 100px;
+  /* width: 100px; */
   border: solid #000;
   border-radius: 15px;
   color: #000;
   text-align: center;
-  padding: 4px;
+  padding: 4px 18px;
   margin: 20px 10px;
   font-size: 14px;
 }
@@ -264,11 +265,11 @@ input::-webkit-inner-spin-button {
 
 /* --- Gifting function --- */
 .gift_menu {
-  display: none;
+  visibility:hidden;
   padding: 10px 10px;
   border: solid 0.5px;
   background-color: #000;
-  z-index: 7;
+  z-index: 9;
   position: absolute;
   top: 40%;
   left: 50%;
@@ -388,7 +389,7 @@ input::-webkit-inner-spin-button {
   .timer_end,
   .timer_gift,
   .timer_hold {
-    padding: 0 5px;
+    padding: 4px 10px;
   }
 
   .gift_recipient,
