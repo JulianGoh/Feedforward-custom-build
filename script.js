@@ -216,7 +216,6 @@ btnStart.addEventListener("click", function () {
   if(btnStartStatus === 'disabled'){
     //Start timer  
     acc = setInterval(setTime, 1000);
-    console.log(acc);
 
     //Add overlay
     overlay.classList.remove("hidden");
