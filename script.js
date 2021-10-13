@@ -191,18 +191,55 @@ let minutesLabel = document.querySelector(".minutes");
 let secondsLabel = document.querySelector(".seconds");
 let totalSeconds = 0;
 let acc;
+let btnStartStatus = 'disabled';
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60) % 60);
+  hoursLabel.innerHTML = pad(parseInt(totalSeconds / 3600));
+}
+
+function pad(val) {
+  const valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
 
 // Start timer functionality
 
 btnStart.addEventListener("click", function () {
-  acc = setInterval(setTime, 1000);
-  overlay.classList.remove("hidden");
-  document.querySelector(".timer").style.zIndex = "8";
+  
+  if(btnStartStatus === 'disabled'){
+    //Start timer  
+    acc = setInterval(setTime, 1000);
+    console.log(acc);
+
+    //Add overlay
+    overlay.classList.remove("hidden");
+    document.querySelector(".timer").style.zIndex = "8";
+
+    //Prevent repeat btnStart presses
+    btnStartStatus = 'enabled';
+
+  } else if (btnStartStatus === 'enabled'){
+  };
 });
 
 // Stop timer functionality
 btnEnd.addEventListener("click", function () {
+  
+  //Stop timer from counting up
   clearInterval(acc);
+
+  //Remove overlay
+  overlay.classList.add("hidden");
+
+  // Reset btnStartStatus
+  btnStartStatus = 'disabled';
 });
 
 // Gift time functionality
@@ -267,24 +304,14 @@ timerHold.addEventListener("click", function () {
   overlay.classList.add("hidden");
 });
 
-function setTime() {
-  ++totalSeconds;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60) % 60);
-  hoursLabel.innerHTML = pad(parseInt(totalSeconds / 3600));
-}
-
-function pad(val) {
-  var valString = val + "";
-  if (valString.length < 2) {
-    return "0" + valString;
-  } else {
-    return valString;
-  }
-}
 
 /* --- Wake lock function --- */
 
+//IOS compatible wakelock
+
+
+
+/*
 const wakeButton = document.querySelector("[data-status]");
 
 // test support
@@ -334,3 +361,5 @@ if (isSupported) {
     }
   };
 }
+
+*/

@@ -97,9 +97,9 @@ input::-webkit-inner-spin-button {
   font-size: 1.6rem;
   font-family: inherit;
   text-align: center;
-  width: 12rem;
+  width: 13rem;
   border-radius: 10rem;
-  margin-left: 1rem;
+  margin: 0 1rem;
   color: inherit;
   border: 3px solid #000;
   background-color: #fff;
@@ -350,6 +350,7 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     align-content: space-evenly;
   }
+
   .main_page {
     height: 80vh;
   }
@@ -365,7 +366,7 @@ input::-webkit-inner-spin-button {
   }
   .user_prompt {
     order: 2;
-    margin: 10px;
+    /* margin: 10px; */
   }
   .signup_form,
   .login_form {
@@ -399,7 +400,7 @@ input::-webkit-inner-spin-button {
   }
 
   .login_prompt,
-  .signup_prompt {
+  .signup_prompt{
     margin: 0 1rem;
   }
 }
