@@ -155,5 +155,30 @@
 
 <div class="overlay hidden"></div>
 <script src="script.js"></script>
+<script src="NoSleep.js-0.12.0/dist/NoSleep.min.js"></script>
+<script>
+  const noSleep = new NoSleep();
+  let wakeLockEnabled = false;
+
+  btnStart.addEventListener('click', function(){
+    if (!wakeLockEnabled) {
+      noSleep.enable(); // keep the screen on!
+      wakeLockEnabled = true;
+    }
+  }, false);
+
+  // wakelock release
+  btnEnd.addEventListener("click", () => {
+    noSleep.disable();
+    wakeLockEnabled = false;
+  });
+
+  const handleVisibilityChange = () => {
+    if (wakeLockEnabled !== false && document.visibilityState === "visible") {
+      noSleep.enable();
+    }
+  };
+</script>
+
 </body>
 </html>
