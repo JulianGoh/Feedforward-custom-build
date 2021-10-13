@@ -57,7 +57,7 @@ input::-webkit-inner-spin-button {
 .welcome {
   font-size: 1.9rem;
   font-weight: 500;
-  width: 250px;
+  width: 300px;
 }
 
 .logo {
@@ -354,6 +354,7 @@ input::-webkit-inner-spin-button {
   .main_page {
     height: 80vh;
   }
+
   .logo {
     order: 1;
     height: 7.5rem;
