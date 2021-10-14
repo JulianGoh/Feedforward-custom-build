@@ -53,7 +53,7 @@ const account0 = {
   email: "neo@gmail.com",
   username: "neo",
   pin: 1,
-  time: 99,
+  time: 999999,
 };
 
 const account1 = {
@@ -100,10 +100,17 @@ btnLogin.addEventListener("click", function (e) {
 
     //Remove overlay
     overlay.classList.add("hidden");
+
+    // const currentSeconds = currentAccount.time;
+    // const currentMinutes = currentSeconds % 60;
+    // const currentHours = (currentSeconds / 60) % 60;
+    // const currentDays = currentSeconds / 3600;
   } else {
     inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur();
   }
+
+  
 });
 
 // --- SIGN UP --- //
@@ -168,7 +175,7 @@ userProfilePrompt.addEventListener("click", function () {
   userEmail.textContent = `Email: ${currentAccount.email}`;
   userUsername.textContent = `Username: ${currentAccount.username}`;
   userPin.textContent = `Pin: ${currentAccount.pin}`;
-  userTime.textContent = `Time: ${currentAccount.time} seconds`;
+  userTime.textContent = `Time: ${new Intl.NumberFormat('en-AU').format(currentAccount.time)} seconds`;
   document.querySelector(".timer").style.zIndex = "3";
 });
 
@@ -248,13 +255,17 @@ let name1 = [];
 let table = document.createElement("table");
 table.className = "gift_table";
 
+
+// const currentHours = 
+
 timerGift.addEventListener("click", function () {
   // console.log(table);
   overlay.classList.remove("hidden");
   giftMenu.style.visibility = "visible";
   document.querySelector(".timer").style.zIndex = "3";
-  giftUserTime.textContent = `You currently have: ${currentAccount.time} seconds.`;
-  // giftMenu.style.display = "inline-block";
+
+  //Time display
+  giftUserTime.textContent = `You currently have: ${new Intl.NumberFormat('en-AU').format(currentAccount.time)} seconds.`;
   document.querySelector(".gift_menu").appendChild(table);
   for (const [ind, user] of accounts.entries()) {
     let singleUser = document.createElement("div");
