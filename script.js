@@ -290,16 +290,16 @@ giftConfirm.addEventListener("click", function () {
   let validAccount = accounts.find(
     (acc) => acc.username === giftRecipient.value
   );
-  if (
+  if ( // 14/10/21 - Does not allow 'Enter' to submit time gift
+    currentAccount.username != validAccount.username &&
     valueTransfer > 0 &&
     validAccount &&
-    timeGift.value <= currentAccount.time &&
-    currentAccount.username != validAccount.username
+    timeGift.value <= currentAccount.time    
   ) {
     currentAccount.time = currentAccount.time - valueTransfer;
     validAccount.time = validAccount.time + valueTransfer;
     timeGift.value = giftRecipient.value = "";
-    giftUserTime.textContent = `You currently have: ${currentAccount.time} seconds.`;
+    giftUserTime.textContent = `You currently have: ${new Intl.NumberFormat('en-AU').format(currentAccount.time)} seconds.`;
     // console.log("Successful gift");
   }
 });
