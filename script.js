@@ -10,7 +10,7 @@ const userPrompt = document.querySelector(".user_prompt");
 const signUpPrompt = document.querySelector(".signup_prompt");
 const loginPrompt = document.querySelector(".login_prompt");
 const logoutPrompt = document.querySelector(".logout_prompt");
-const btnSignUp = document.querySelector(".signup_btn");
+const btnSignUp = document.querySelector(".signup__btn");
 const newUserName = document.querySelector(".signup_name");
 const newUserEmail = document.querySelector(".signup_email");
 const newUserUsername = document.querySelector(".signup_username");
@@ -34,6 +34,8 @@ const giftRecipient = document.querySelector(".gift_recipient");
 const timeGift = document.querySelector(".time_gift");
 const usersOther = document.querySelector(".users_other");
 const usersOtherName = document.querySelector(".users_other_name");
+const closeAccount = document.querySelector(".close_acc");
+const closeAccountPin = document.querySelector(".close_acc_pin");
 
 logoutPrompt.classList.add("hidden");
 // signUpForm.classList.add("hidden");
@@ -65,6 +67,20 @@ const account1 = {
 };
 
 const accounts = [account0, account1];
+let userAccounts = JSON.parse(localStorage.getItem('userAccounts'));
+
+const closeInterface = function(){
+  currentAccount = null;
+  loginPrompt.classList.remove("hidden");
+  signUpPrompt.classList.remove("hidden");
+  logoutPrompt.classList.add("hidden");
+  labelWelcome.textContent = "Login to get started";
+  document.querySelector(".timer").style.visibility = "hidden";
+  userProfilePrompt.style.display = "none";
+  userProfile.style.display = "none";
+  overlay.classList.add("hidden");
+}
+
 
 // Event handlers
 let currentAccount;
@@ -73,7 +89,7 @@ btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
 
-  currentAccount = accounts.find(
+  currentAccount = userAccounts.find(
     (acc) => acc.username === inputLoginUsername.value.toLowerCase()
   );
 
@@ -113,6 +129,9 @@ btnLogin.addEventListener("click", function (e) {
   
 });
 
+
+
+
 // --- SIGN UP --- //
 signUpPrompt.addEventListener("click", function () {
   document.querySelector(".signup_form").style.display = "inline-block";
@@ -148,6 +167,9 @@ btnSignUp.addEventListener("click", function (e) {
     loginPrompt.style.visibility = "visible";
     signUpPrompt.style.visibility = "visible";
     overlay.classList.add("hidden");
+
+    //Store new accounts array in localStorage
+    localStorage.setItem('userAccounts', JSON.stringify(accounts));
   }
 });
 
@@ -181,13 +203,7 @@ userProfilePrompt.addEventListener("click", function () {
 
 /* --- Sign out --- */
 logoutPrompt.addEventListener("click", function () {
-  currentAccount = null;
-  loginPrompt.classList.remove("hidden");
-  signUpPrompt.classList.remove("hidden");
-  logoutPrompt.classList.add("hidden");
-  labelWelcome.textContent = "Login to get started";
-  document.querySelector(".timer").style.visibility = "hidden";
-  userProfilePrompt.style.display = "none";
+  closeInterface();
 });
 
 /* --- Timer --- */
@@ -267,7 +283,7 @@ timerGift.addEventListener("click", function () {
   //Time display
   giftUserTime.textContent = `You currently have: ${new Intl.NumberFormat('en-AU').format(currentAccount.time)} seconds.`;
   document.querySelector(".gift_menu").appendChild(table);
-  for (const [ind, user] of accounts.entries()) {
+  for (const [ind, user] of userAccounts.entries()) {
     let singleUser = document.createElement("div");
     singleUser.className = "single_user";
 
@@ -287,7 +303,7 @@ timerGift.addEventListener("click", function () {
 
 giftConfirm.addEventListener("click", function () {
   let valueTransfer = Number(timeGift.value);
-  let validAccount = accounts.find(
+  let validAccount = userAccounts.find(
     (acc) => acc.username === giftRecipient.value
   );
   if ( // 14/10/21 - Does not allow 'Enter' to submit time gift
@@ -301,12 +317,14 @@ giftConfirm.addEventListener("click", function () {
     timeGift.value = giftRecipient.value = "";
     giftUserTime.textContent = `You currently have: ${new Intl.NumberFormat('en-AU').format(currentAccount.time)} seconds.`;
     // console.log("Successful gift");
+    localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
   }
 });
 
 /* --- Hodl function --- */
 timerHold.addEventListener("click", function () {
   currentAccount.time = totalSeconds + currentAccount.time;
+  localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
   totalSeconds = 0;
   secondsLabel.innerHTML = "00";
   minutesLabel.innerHTML = "00";
@@ -314,6 +332,21 @@ timerHold.addEventListener("click", function () {
   overlay.classList.add("hidden");
 });
 
+
+userProfile.addEventListener("click", function(e){
+  e.preventDefault();
+
+  if(e.target.classList.contains('close_acc') &&
+  Number(closeAccountPin.value) === currentAccount.pin){
+    const index = userAccounts.findIndex(acc => acc.username === currentAccount.username);
+    userAccounts.splice(index, 1);
+    closeInterface();
+    closeAccountPin.value = '';
+    
+    localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+
+  }
+})
 
 /* --- Wake lock function --- */
 

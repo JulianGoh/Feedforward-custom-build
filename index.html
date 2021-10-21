@@ -91,12 +91,11 @@
             class = "signup_input signup_pin"
             required
         > 
-    <button class="signup_btn">&rarr;</button>
+    <button class="signup__btn">&rarr;</button>
     <p><br>** Usernames - lowercase and no spaces please</p>
     </form>
 </div>
 <main class = "main_page">
-  
     <div class = "user_profile_summary">
       <h1 class="user_profile_welcome"></h1>
       <p class="user_details user_name"> Lorem ipsum</p>
@@ -104,6 +103,16 @@
       <p class="user_details user_username">Lorem ipsum</p>
       <p class="user_details user_pin">Lorem ipsum</p>
       <p class="user_details user_time">Lorem ipsum</p>
+      <div class = "close_acc_container">
+        <input
+              type = "number"
+              placeholder="Confirm pin"
+              maxlength="4"
+              class="close_acc_pin"
+              required
+        >
+        <button type = "button" class= "close_acc"> Close account </button>
+      </div>
     </div>
 
     <div class="timer">
