@@ -89,6 +89,8 @@ btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
 
+  userAccounts = JSON.parse(localStorage.getItem('userAccounts'));
+
   currentAccount = userAccounts.find(
     (acc) => acc.username === inputLoginUsername.value.toLowerCase()
   );
