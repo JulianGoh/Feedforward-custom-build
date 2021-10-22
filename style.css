@@ -23,6 +23,15 @@ body {
   background-color: #f3f3f3;
 }
 
+h1 {
+  font-size: 50px;
+  color: #000;
+}
+
+h2 {
+  font-size: 15px;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -35,6 +44,28 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.landing-welcome-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5% 15%;
+}
+
+.landing-welcome {
+  width: 100%;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  overflow: none;
+}
+
+.sub-heading {
+  /* top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  margin-top: 15px;
 }
 
 .hidden {
@@ -53,7 +84,6 @@ input::-webkit-inner-spin-button {
   overflow: -moz-hidden-unscrollable;
 }
 
-
 .welcome {
   font-size: 1.9rem;
   font-weight: 500;
@@ -63,24 +93,6 @@ input::-webkit-inner-spin-button {
 .logo {
   height: 10.5rem;
 }
-/* .login {
-  display: none;
-  visibility: hidden;
-} */
-/* 
-.login__input {
-  border: none;
-  padding: 0.5rem 2rem;
-  font-size: 1.6rem;
-  font-family: inherit;
-  text-align: center;
-  width: 14rem;
-  border-radius: 10rem;
-  margin-right: 1rem;
-  color: inherit;
-  border: 1px solid #fff;
-  transition: all 0.3s;
-} */
 
 .user_prompt {
   display: flex;
@@ -111,23 +123,22 @@ input::-webkit-inner-spin-button {
   width: 13rem;
 }
 
-.close_acc_container{
+.close_acc_container {
   width: 100%;
-  display:flex;
+  display: flex;
   justify-content: center;
 }
 
-.close_acc{
+.close_acc {
   width: 11rem;
-  margin:0;
+  margin: 0;
   text-align: center;
-  background-color: #922D50;
-  color:#fff;
+  background-color: #922d50;
+  color: #fff;
   font-size: 12px;
 }
 
-
-.close_acc_pin{
+.close_acc_pin {
   width: 12rem;
   /* border-radius: 10rem; */
 }
@@ -185,16 +196,15 @@ input::-webkit-inner-spin-button {
   height: 45px;
 }
 
-
 .main_page {
   position: relative;
-  height: 100vh;
+  height: 80vh;
   padding: 2rem;
 }
 
 .signup_form,
 .login_form {
-  display: none ;
+  display: none;
   width: 250px;
   position: absolute;
   right: 2rem;
@@ -288,7 +298,7 @@ input::-webkit-inner-spin-button {
 
 /* --- Gifting function --- */
 .gift_menu {
-  visibility:hidden;
+  visibility: hidden;
   padding: 10px 10px;
   border: solid 0.5px;
   background-color: #000;
@@ -374,6 +384,22 @@ input::-webkit-inner-spin-button {
     align-content: space-evenly;
   }
 
+  h1 {
+    font-size: 25px;
+  }
+
+  h2 {
+    font-size: 10px;
+  }
+
+  .landing-welcome-container {
+    padding: 50% 6%;
+  }
+
+  .sub-heading {
+    /* margin-top:0px; */
+  }
+
   .main_page {
     height: 80vh;
   }
@@ -424,7 +450,7 @@ input::-webkit-inner-spin-button {
   }
 
   .login_prompt,
-  .signup_prompt{
+  .signup_prompt {
     margin: 0 1rem;
   }
 }

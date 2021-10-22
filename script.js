@@ -38,8 +38,70 @@ const closeAccount = document.querySelector(".close_acc");
 const closeAccountPin = document.querySelector(".close_acc_pin");
 
 logoutPrompt.classList.add("hidden");
-// signUpForm.classList.add("hidden");
-// loginForm.classList.add("hidden");
+
+// Receive from API
+
+// const request = new XMLHttpRequest();
+// request.open("GET", "https://feedforward-api.herokuapp.com/accounts");
+// request.send();
+
+// request.addEventListener("load", function () {
+//   const accountsAPI = JSON.parse(this.responseText);
+//   console.log(accountsAPI);
+
+  // const newAcc = {
+  //   name: "John Wick",
+  //   email: "jw@gmail.com",
+  //   username: "jw",
+  //   pin: 3,
+  //   time: 0,
+  // };
+
+  // accountsAPI.push(newAcc);
+  // console.log(accountsAPI);
+
+  // (async () => {
+  //     const upload = await fetch('https://feedforward-api.herokuapp.com/accounts',
+  //     {
+  //     method: "POST",
+  //     body: JSON.stringify(accountsAPI),
+  //     });
+  //   const content = await upload.json();
+  //   console.log(content);
+    
+  // })();
+
+//   
+
+// });
+
+const newAcc = {
+  name: "John Wick",
+  email: "jw@gmail.com",
+  username: "jw",
+  pin: 3,
+  time: 0,
+};
+
+  fetch('https://feedforward-api.herokuapp.com/accounts', {
+  method: 'POST',
+  body: JSON.stringify(newAcc),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+  })
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+
+
+
+const accountsAPI_2 = fetch("https://feedforward-api.herokuapp.com/accounts")
+  .then((resp) => resp.json())
+  .then(function (data) {
+    console.log(data);
+    return data;
+  });
+
 
 /* --- User Login --- */
 //Login
@@ -67,9 +129,9 @@ const account1 = {
 };
 
 const accounts = [account0, account1];
-let userAccounts = JSON.parse(localStorage.getItem('userAccounts'));
+let userAccounts = JSON.parse(localStorage.getItem("userAccounts"));
 
-const closeInterface = function(){
+const closeInterface = function () {
   currentAccount = null;
   loginPrompt.classList.remove("hidden");
   signUpPrompt.classList.remove("hidden");
@@ -79,8 +141,7 @@ const closeInterface = function(){
   userProfilePrompt.style.display = "none";
   userProfile.style.display = "none";
   overlay.classList.add("hidden");
-}
-
+};
 
 // Event handlers
 let currentAccount;
@@ -89,7 +150,7 @@ btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
 
-  userAccounts = JSON.parse(localStorage.getItem('userAccounts'));
+  userAccounts = JSON.parse(localStorage.getItem("userAccounts"));
 
   currentAccount = userAccounts.find(
     (acc) => acc.username === inputLoginUsername.value.toLowerCase()
@@ -127,12 +188,7 @@ btnLogin.addEventListener("click", function (e) {
     inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur();
   }
-
-  
 });
-
-
-
 
 // --- SIGN UP --- //
 signUpPrompt.addEventListener("click", function () {
@@ -171,7 +227,7 @@ btnSignUp.addEventListener("click", function (e) {
     overlay.classList.add("hidden");
 
     //Store new accounts array in localStorage
-    localStorage.setItem('userAccounts', JSON.stringify(accounts));
+    localStorage.setItem("userAccounts", JSON.stringify(accounts));
   }
 });
 
@@ -199,7 +255,9 @@ userProfilePrompt.addEventListener("click", function () {
   userEmail.textContent = `Email: ${currentAccount.email}`;
   userUsername.textContent = `Username: ${currentAccount.username}`;
   userPin.textContent = `Pin: ${currentAccount.pin}`;
-  userTime.textContent = `Time: ${new Intl.NumberFormat('en-AU').format(currentAccount.time)} seconds`;
+  userTime.textContent = `Time: ${new Intl.NumberFormat("en-AU").format(
+    currentAccount.time
+  )} seconds`;
   document.querySelector(".timer").style.zIndex = "3";
 });
 
@@ -216,7 +274,7 @@ let minutesLabel = document.querySelector(".minutes");
 let secondsLabel = document.querySelector(".seconds");
 let totalSeconds = 0;
 let acc;
-let btnStartStatus = 'disabled';
+let btnStartStatus = "disabled";
 
 function setTime() {
   ++totalSeconds;
@@ -237,9 +295,8 @@ function pad(val) {
 // Start timer functionality
 
 btnStart.addEventListener("click", function () {
-  
-  if(btnStartStatus === 'disabled'){
-    //Start timer  
+  if (btnStartStatus === "disabled") {
+    //Start timer
     acc = setInterval(setTime, 1000);
 
     //Add overlay
@@ -247,15 +304,13 @@ btnStart.addEventListener("click", function () {
     document.querySelector(".timer").style.zIndex = "8";
 
     //Prevent repeat btnStart presses
-    btnStartStatus = 'enabled';
-
-  } else if (btnStartStatus === 'enabled'){
-  };
+    btnStartStatus = "enabled";
+  } else if (btnStartStatus === "enabled") {
+  }
 });
 
 // Stop timer functionality
 btnEnd.addEventListener("click", function () {
-  
   //Stop timer from counting up
   clearInterval(acc);
 
@@ -263,7 +318,7 @@ btnEnd.addEventListener("click", function () {
   overlay.classList.add("hidden");
 
   // Reset btnStartStatus
-  btnStartStatus = 'disabled';
+  btnStartStatus = "disabled";
 });
 
 // Gift time functionality
@@ -273,8 +328,7 @@ let name1 = [];
 let table = document.createElement("table");
 table.className = "gift_table";
 
-
-// const currentHours = 
+// const currentHours =
 
 timerGift.addEventListener("click", function () {
   // console.log(table);
@@ -283,7 +337,9 @@ timerGift.addEventListener("click", function () {
   document.querySelector(".timer").style.zIndex = "3";
 
   //Time display
-  giftUserTime.textContent = `You currently have: ${new Intl.NumberFormat('en-AU').format(currentAccount.time)} seconds.`;
+  giftUserTime.textContent = `You currently have: ${new Intl.NumberFormat(
+    "en-AU"
+  ).format(currentAccount.time)} seconds.`;
   document.querySelector(".gift_menu").appendChild(table);
   for (const [ind, user] of userAccounts.entries()) {
     let singleUser = document.createElement("div");
@@ -308,25 +364,28 @@ giftConfirm.addEventListener("click", function () {
   let validAccount = userAccounts.find(
     (acc) => acc.username === giftRecipient.value
   );
-  if ( // 14/10/21 - Does not allow 'Enter' to submit time gift
+  if (
+    // 14/10/21 - Does not allow 'Enter' to submit time gift
     currentAccount.username != validAccount.username &&
     valueTransfer > 0 &&
     validAccount &&
-    timeGift.value <= currentAccount.time    
+    timeGift.value <= currentAccount.time
   ) {
     currentAccount.time = currentAccount.time - valueTransfer;
     validAccount.time = validAccount.time + valueTransfer;
     timeGift.value = giftRecipient.value = "";
-    giftUserTime.textContent = `You currently have: ${new Intl.NumberFormat('en-AU').format(currentAccount.time)} seconds.`;
+    giftUserTime.textContent = `You currently have: ${new Intl.NumberFormat(
+      "en-AU"
+    ).format(currentAccount.time)} seconds.`;
     // console.log("Successful gift");
-    localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+    localStorage.setItem("userAccounts", JSON.stringify(userAccounts));
   }
 });
 
 /* --- Hodl function --- */
 timerHold.addEventListener("click", function () {
   currentAccount.time = totalSeconds + currentAccount.time;
-  localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+  localStorage.setItem("userAccounts", JSON.stringify(userAccounts));
   totalSeconds = 0;
   secondsLabel.innerHTML = "00";
   minutesLabel.innerHTML = "00";
@@ -334,27 +393,27 @@ timerHold.addEventListener("click", function () {
   overlay.classList.add("hidden");
 });
 
-
-userProfile.addEventListener("click", function(e){
+userProfile.addEventListener("click", function (e) {
   e.preventDefault();
 
-  if(e.target.classList.contains('close_acc') &&
-  Number(closeAccountPin.value) === currentAccount.pin){
-    const index = userAccounts.findIndex(acc => acc.username === currentAccount.username);
+  if (
+    e.target.classList.contains("close_acc") &&
+    Number(closeAccountPin.value) === currentAccount.pin
+  ) {
+    const index = userAccounts.findIndex(
+      (acc) => acc.username === currentAccount.username
+    );
     userAccounts.splice(index, 1);
     closeInterface();
-    closeAccountPin.value = '';
-    
-    localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+    closeAccountPin.value = "";
 
+    localStorage.setItem("userAccounts", JSON.stringify(userAccounts));
   }
-})
+});
 
 /* --- Wake lock function --- */
 
 //IOS compatible wakelock
-
-
 
 /*
 const wakeButton = document.querySelector("[data-status]");
