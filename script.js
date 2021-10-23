@@ -100,23 +100,6 @@ logoutPrompt.classList.add("hidden");
 //     return data;
 //   });
 
-let userAccountsAPI;
-
-const fetchAccounts = async function () {
-  try{
-  userAccountsAPI = await fetch("https://rocky-forest-33104.herokuapp.com/https://feedforward-api-2.herokuapp.com/accounts", {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json'},
-    // mode: 'cors', //23/10/21 - Return back to 'cors' 
-    // cache: 'default'
-  });
-  console.log(userAccountsAPI);
-  } catch (err){
-    console.log(err);
-  }
-};
-
-fetchAccounts().then(accs => console.log(accs));
 
 /* --- User Login --- */
 //Login
