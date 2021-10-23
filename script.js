@@ -49,59 +49,74 @@ logoutPrompt.classList.add("hidden");
 //   const accountsAPI = JSON.parse(this.responseText);
 //   console.log(accountsAPI);
 
-  // const newAcc = {
-  //   name: "John Wick",
-  //   email: "jw@gmail.com",
-  //   username: "jw",
-  //   pin: 3,
-  //   time: 0,
-  // };
+// const newAcc = {
+//   name: "John Wick",
+//   email: "jw@gmail.com",
+//   username: "jw",
+//   pin: 3,
+//   time: 0,
+// };
 
-  // accountsAPI.push(newAcc);
-  // console.log(accountsAPI);
+// accountsAPI.push(newAcc);
+// console.log(accountsAPI);
 
-  // (async () => {
-  //     const upload = await fetch('https://feedforward-api.herokuapp.com/accounts',
-  //     {
-  //     method: "POST",
-  //     body: JSON.stringify(accountsAPI),
-  //     });
-  //   const content = await upload.json();
-  //   console.log(content);
-    
-  // })();
+// (async () => {
+//     const upload = await fetch('https://feedforward-api.herokuapp.com/accounts',
+//     {
+//     method: "POST",
+//     body: JSON.stringify(accountsAPI),
+//     });
+//   const content = await upload.json();
+//   console.log(content);
 
-//   
+// })();
+
+//
 
 // });
 
-const newAcc = {
-  name: "John Wick",
-  email: "jw@gmail.com",
-  username: "jw",
-  pin: 3,
-  time: 0,
+// const newAcc = {
+//   name: "John Wick",
+//   email: "jw@gmail.com",
+//   username: "jw",
+//   pin: 3,
+//   time: 0,
+// };
+
+//   fetch('https://feedforward-api.herokuapp.com/accounts', {
+//   method: 'POST',
+//   body: JSON.stringify(newAcc),
+//   headers: {
+//     'Content-type': 'application/json; charset=UTF-8',
+//   },
+//   })
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));
+
+// const accountsAPI_2 = fetch("https://feedforward-api.herokuapp.com/accounts")
+//   .then((resp) => resp.json())
+//   .then(function (data) {
+//     console.log(data);
+//     return data;
+//   });
+
+let userAccountsAPI;
+
+const fetchAccounts = async function () {
+  try{
+  userAccountsAPI = await fetch("https://rocky-forest-33104.herokuapp.com/https://feedforward-api-2.herokuapp.com/accounts", {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json'},
+    // mode: 'cors', //23/10/21 - Return back to 'cors' 
+    // cache: 'default'
+  });
+  console.log(userAccountsAPI);
+  } catch (err){
+    console.log(err);
+  }
 };
 
-  fetch('https://feedforward-api.herokuapp.com/accounts', {
-  method: 'POST',
-  body: JSON.stringify(newAcc),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
-  })
-  .then((response) => response.json())
-  .then((json) => console.log(json));
-
-
-
-const accountsAPI_2 = fetch("https://feedforward-api.herokuapp.com/accounts")
-  .then((resp) => resp.json())
-  .then(function (data) {
-    console.log(data);
-    return data;
-  });
-
+fetchAccounts().then(accs => console.log(accs));
 
 /* --- User Login --- */
 //Login
