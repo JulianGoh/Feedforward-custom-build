@@ -101,6 +101,37 @@ logoutPrompt.classList.add("hidden");
 //   });
 
 
+/* LATEST ATTEMPT 31/10/21 
+let userAccountsAPI;
+
+const fetchAccounts = async function () {
+  try{
+  userAccountsAPI = await fetch("https://feedforward-api-2.herokuapp.com/accounts", {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json',
+    // 'Access-Control-Allow-Origin': 'http://127.0.0.1:5500'},
+    // mode: 'cors', //23/10/21 - Return back to 'cors' 
+    // cache: 'default'
+  }});
+  console.log(userAccountsAPI);
+  } catch (err){
+    console.log(err);
+  };
+};
+fetchAccounts().then(accs => console.log(accs));
+
+*/
+
+// const request = new XMLHttpRequest();
+// request.open("GET", "https://feedforward-api-2.herokuapp.com/accounts");
+// request.send();
+
+// request.addEventListener("load", function () {
+//   const accountsAPI = JSON.parse(this.responseText);
+//   console.log(accountsAPI);
+// });
+
+
 /* --- User Login --- */
 //Login
 loginPrompt.addEventListener("click", function () {
