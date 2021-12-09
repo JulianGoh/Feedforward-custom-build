@@ -231,6 +231,11 @@ input::-webkit-inner-spin-button {
   transform: translate(-50%, -60%);
 }
 
+.user_profile_welcome{
+    font-size: 1.9rem;
+}
+
+
 .user_details {
   margin: 10px 0;
   padding: 10px 10px;
@@ -422,6 +427,8 @@ input::-webkit-inner-spin-button {
     order: 2;
     /* margin: 10px; */
   }
+    
+
   .signup_form,
   .login_form {
     position: absolute;
